@@ -6,6 +6,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:stateManangment/Bloc_Cubit/bloc/BlocOynatmaListesi/3/blocOynatmaListesiview3.dart';
 import 'package:stateManangment/Bloc_Cubit/bloc/bloc1/blocview1.dart';
 import 'package:stateManangment/Bloc_Cubit/bloc/bloc2/blocview2.dart';
+import 'package:stateManangment/Bloc_Cubit/bloc/bloc3HydratedBlocOverrides/bloc/bloc_imports.dart';
 import 'package:stateManangment/Bloc_Cubit/bloc/bloc3HydratedBlocOverrides/blochyratedOverrieesview3.dart';
 import 'package:stateManangment/Bloc_Cubit/blocWithStream/blocstreamview.dart';
 import 'package:stateManangment/Bloc_Cubit/cubit/cubit1/cubitview1.dart';
@@ -38,6 +39,9 @@ import 'Get_it/get_it1/locator1.dart';
 import 'inheritedWidget/inheritedWidget3/inheritedWidgetview3.dart';
 
 void main()async{
+
+  
+
   WidgetsFlutterBinding.ensureInitialized();
 
   final storage = await HydratedStorage.build(
@@ -47,6 +51,7 @@ void main()async{
       
   HydratedBlocOverrides.runZoned(
     () => runApp(MyApp()),
+    blocObserver: MyBlocObserver(),
     storage: storage,
   );
 }
@@ -69,6 +74,9 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //Theme.of()
+    MediaQuery.of(context);
+    
     return  Scaffold(
       appBar: AppBar(),
       body: Wrap(
